@@ -23,17 +23,14 @@ Para acessar todo o conteúdo da SDS2 <a href= https://github.com/devsuperior/sd
 ![img_1.png](img_1.png)
 
 
-
-### Hospedagem
-
-Projeto hospedado no Heroku https://alexsds2.herokuapp.com/
-
 ### Endpoints
 
-[GET] https://alexsds2.herokuapp.com/products
+Projeto hospedado em http://alexmotaoliveira.com/dsdeliver
 
-[GET] https://alexsds2.herokuapp.com/orders
+[GET] http://alexmotaoliveira.com/dsdeliver/products
 
-[POST] https://alexsds2.herokuapp.com/orders
+[GET] http://alexmotaoliveira.com/dsdeliver/orders
 
-[PUT] https://alexsds2.herokuapp.com/orders/{id}/delivered
+[POST] http://alexmotaoliveira.com/dsdeliver/orders
+
+[PUT] http://alexmotaoliveira.com/dsdeliver/orders/{id}/delivered
