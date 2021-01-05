@@ -1,39 +1,37 @@
 package com.devsuperior.dsdeliver.dto;
 
 import com.devsuperior.dsdeliver.enteties.Product;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Objects;
 
+@Data
+@Builder
+@AllArgsConstructor @NoArgsConstructor
 public class ProductDTO implements Serializable {
 
     private Long id;
 
     @NotEmpty
+    @Size(min = 1, max = 60)
     private String name;
 
     @NotEmpty
+    @Size(min = 1, max = 10)
     private Double price;
 
     @NotEmpty
+    @Size(min = 1, max = 300)
     private String description;
 
     @NotEmpty
+    @Size(min = 1, max = 300)
     private String imageUri;
-
-    public ProductDTO() {
-
-    }
-
-    public ProductDTO(Long id, String name, Double price, String description, String imageUri) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.imageUri = imageUri;
-    }
 
     public ProductDTO(Product entity) {
         this.id = entity.getId();
@@ -41,65 +39,5 @@ public class ProductDTO implements Serializable {
         this.price = entity.getPrice();
         this.description = entity.getDescription();
         this.imageUri = entity.getImageUri();
-    }
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImageUri() {
-        return imageUri;
-    }
-
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        ProductDTO other = (ProductDTO) obj;
-        if (id == null) {
-            if (other.id != null) return false;
-        }else if (!id.equals(other.id)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }
