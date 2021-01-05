@@ -5,10 +5,9 @@ import com.devsuperior.dsdeliver.dto.ProductDTO;
 import com.devsuperior.dsdeliver.service.OrderService;
 import com.devsuperior.dsdeliver.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,12 @@ public class OrderController {
     public ResponseEntity<List<OrderDTO>> findAll(){
         List<OrderDTO> list = orderService.findAll();
         return ResponseEntity.ok().body(list);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<OrderDTO> create(@RequestBody OrderDTO orderDTO){
+        orderDTO = orderService.create(orderDTO);
+        return ResponseEntity.ok().body(orderDTO);
     }
 }
