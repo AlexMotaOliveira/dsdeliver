@@ -2,6 +2,7 @@ package com.devsuperior.dsdeliver.controllers;
 
 import com.devsuperior.dsdeliver.dto.OrderDTO;
 import com.devsuperior.dsdeliver.dto.ProductDTO;
+import com.devsuperior.dsdeliver.exceptions.errors.OrderNotFoundException;
 import com.devsuperior.dsdeliver.service.OrderService;
 import com.devsuperior.dsdeliver.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class OrderController {
     }
 
     @PutMapping("/{id}/delivered")
-    public ResponseEntity<OrderDTO> setDelivered(@PathVariable Long id){
+    public ResponseEntity<OrderDTO> setDelivered(@PathVariable Long id) throws OrderNotFoundException {
         OrderDTO orderDTO = orderService.setDelivered(id);
         return ResponseEntity.ok().body(orderDTO);
     }
