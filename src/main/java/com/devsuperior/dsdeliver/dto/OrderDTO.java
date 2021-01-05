@@ -1,19 +1,16 @@
-package com.devsuperior.dsdeliver.enteties;
+package com.devsuperior.dsdeliver.dto;
 
-import com.devsuperior.dsdeliver.dto.OrderDTO;
+import com.devsuperior.dsdeliver.enteties.Order;
+import com.devsuperior.dsdeliver.enteties.OrderStatus;
+import com.devsuperior.dsdeliver.enteties.Product;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
-@Entity
-@Table(name = "tb_order")
-public class Order {
+public class OrderDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String address;
@@ -26,17 +23,13 @@ public class Order {
 
     private OrderStatus status;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "tb_order_product",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private Set<Product> products = new HashSet<>();
+    private List<ProductDTO> products = new ArrayList<>();
 
-    public Order(){
+    public OrderDTO(){
 
     }
 
-    public Order(Long id, String address, Double latitude, Double longitude, Instant moment, OrderStatus status) {
+    public OrderDTO(Long id, String address, Double latitude, Double longitude, Instant moment, OrderStatus status) {
         this.id = id;
         this.address = address;
         this.latitude = latitude;
@@ -45,8 +38,23 @@ public class Order {
         this.status = status;
     }
 
+    public OrderDTO(Order entity) {
+        id = entity.getId();
+        address = entity.getAddress();
+        latitude = entity.getLatitude();
+        longitude = entity.getLongitude();
+        moment = entity.getMoment();
+        status = entity.getStatus();
+        products = entity.getProducts().stream()
+                .map(product -> new ProductDTO(product)).collect(Collectors.toList());
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAddress() {
@@ -89,20 +97,7 @@ public class Order {
         this.status = status;
     }
 
-    public Set<Product> getProducts() {
+    public List<ProductDTO> getProducts() {
         return products;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return id.equals(order.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }
