@@ -3,10 +3,11 @@ package com.devsuperior.dsdeliver.dto;
 import com.devsuperior.dsdeliver.enteties.Order;
 import com.devsuperior.dsdeliver.enteties.OrderStatus;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +20,24 @@ public class OrderDTO {
 
     private Long id;
 
+    @NotEmpty
+    @Size(min = 1, max = 300)
     private String address;
 
+    @NotEmpty
+    @Size(min = 1, max = 50)
     private Double latitude;
 
+    @NotEmpty
+    @Size(min = 1, max = 50)
     private Double longitude;
 
+    @NotEmpty
+    @Size(min = 1, max = 20)
     private Instant moment;
 
+    @NotEmpty
+    @Size(min = 1, max = 20)
     private OrderStatus status;
 
     private List<ProductDTO> products = new ArrayList<>();

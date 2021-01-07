@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,14 +23,24 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
+    @Column(nullable = false,length = 300)
     private String address;
 
+    @NotEmpty
+    @Column(nullable = false,length = 50)
     private Double latitude;
 
+    @NotEmpty
+    @Column(nullable = false,length = 50)
     private Double longitude;
 
+    @NotEmpty
+    @Column(nullable = false,length = 20)
     private Instant moment;
 
+    @NotEmpty
+    @Column(nullable = false,length = 20)
     private OrderStatus status;
 
     @ManyToMany(fetch = FetchType.LAZY)
