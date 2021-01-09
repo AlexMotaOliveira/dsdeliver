@@ -38,6 +38,8 @@ public class OrderDTO {
     @Size(min = 1, max = 20)
     private OrderStatus status;
 
+    private Double total;
+
     private List<ProductDTO> products = new ArrayList<>();
 
 
@@ -48,6 +50,7 @@ public class OrderDTO {
         longitude = entity.getLongitude();
         moment = entity.getMoment();
         status = entity.getStatus();
+        total = entity.getTotal();
         products = entity.getProducts().stream()
                 .map(product -> new ProductDTO(product)).collect(Collectors.toList());
     }

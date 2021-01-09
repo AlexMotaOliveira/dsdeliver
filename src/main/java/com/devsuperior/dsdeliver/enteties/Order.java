@@ -33,4 +33,11 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private final Set<Product> products = new HashSet<>();
 
+    public Double getTotal() {
+        double sum = 0;
+        for (Product p: products) {
+            sum += p.getPrice();
+        }
+        return sum;
+    }
 }
