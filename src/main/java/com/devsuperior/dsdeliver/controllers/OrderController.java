@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@CrossOrigin(origins = "http://alexmotaoliveira.com/dsdeliver")
 @RestController
 @RequestMapping(value = "/orders")
 public class OrderController {
