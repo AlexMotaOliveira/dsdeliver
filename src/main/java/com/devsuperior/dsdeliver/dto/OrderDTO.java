@@ -51,9 +51,4 @@ public class OrderDTO {
         products = entity.getProducts().stream()
                 .map(product -> new ProductDTO(product)).collect(Collectors.toList());
     }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
 }
