@@ -1,10 +1,8 @@
 package com.devsuperior.dsdeliver.controllers;
 
 import com.devsuperior.dsdeliver.dto.OrderDTO;
-import com.devsuperior.dsdeliver.dto.ProductDTO;
 import com.devsuperior.dsdeliver.exceptions.errors.OrderNotFoundException;
 import com.devsuperior.dsdeliver.service.OrderService;
-import com.devsuperior.dsdeliver.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
