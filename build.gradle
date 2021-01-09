@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.devsuperior'
 version = ''
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 configurations {
     compileOnly {
