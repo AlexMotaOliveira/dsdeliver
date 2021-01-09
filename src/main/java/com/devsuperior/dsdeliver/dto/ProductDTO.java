@@ -16,21 +16,9 @@ import java.io.Serializable;
 public class ProductDTO implements Serializable {
 
     private Long id;
-
-    @NotEmpty
-    @Size(min = 1, max = 60)
     private String name;
-
-    @NotEmpty
-    @Size(min = 1, max = 10)
     private Double price;
-
-    @NotEmpty
-    @Size(min = 1, max = 300)
     private String description;
-
-    @NotEmpty
-    @Size(min = 1, max = 300)
     private String imageUri;
 
     public ProductDTO(Product entity) {

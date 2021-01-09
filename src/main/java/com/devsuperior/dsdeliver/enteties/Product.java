@@ -21,19 +21,15 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
-    @Column(nullable = false,length = 60)
+
     private String name;
 
-    @NotEmpty
-    @Column(nullable = false,length = 10)
+
     private Double price;
 
-    @NotEmpty
-    @Column(nullable = false,length = 300)
+
     private String description;
 
-    @NotEmpty
-    @Column(nullable = false,length = 300)
+
     private String imageUri;
 }

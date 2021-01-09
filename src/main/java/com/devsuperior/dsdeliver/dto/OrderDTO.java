@@ -24,12 +24,10 @@ public class OrderDTO {
     @Size(min = 1, max = 300)
     private String address;
 
-    @NotEmpty
-    @Size(min = 1, max = 50)
+
     private Double latitude;
 
-    @NotEmpty
-    @Size(min = 1, max = 50)
+
     private Double longitude;
 
     @NotEmpty
